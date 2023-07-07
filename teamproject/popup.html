@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img
+      src="img/mainimg/popup.jpg"
+      alt=""
+      width="1100"
+      height="700"
+      style="size: 100%"
+    />
+    <button id="popup">오늘 하루 이창 열지 않기</button>
+    <script>
+      popbtn = document.getElementById("popup");
+      popbtn.onclick = function (params) {
+        setCookie("popup", "true");
+      };
+
+      function setCookie(name, value) {
+        var date = new Date();
+        date.setTime(date.getTime() + 24 * 60 * 60 * 1000); // 24시간 = 1일
+
+        var expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        window.close();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservation Confirmation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 80px;
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+
+      table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        padding: 15px;
+        border: 1px solid #ccc;
+      }
+
+      th {
+        background-color: #f0f0f0;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      tr:hover {
+        background-color: #e0e0e0;
+      }
+
+      td:first-child,
+      th:first-child {
+        text-align: left;
+      }
+
+      td:last-child,
+      th:last-child {
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header"></header>
+    <div class="container">
+      <h1>Reservation Confirmation</h1>
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Name</th>
+          <th>Hair Menu</th>
+          <th>Payment Amount</th>
+        </tr>
+        <tr>
+          <td class="Date"></td>
+          <td class="Time"></td>
+          <td class="Nmae"></td>
+          <td class="HairMenu"></td>
+          <td class="PaymentAmount"></td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      function getObjectFormSessionStorage(key) {
+        var json = sessionStorage.getItem(key);
+        var object = JSON.parse(json);
+        return object;
+      }
+      window.addEventListener("load", function () {
+        var reservinfo = getObjectFormSessionStorage("reservinfo");
+        var Date = document.querySelector(".Date");
+        var Time = document.querySelector(".Time");
+        var Name = document.querySelector(".Name");
+        var HairMenu = document.querySelector(".HairMenu");
+        var PaymentAmount = document.querySelector(".PaymentAmount");
+
+        Date.innerHTML = reservinfo.date;
+        Time.innerHTML = reservinfo.time;
+        Name.innerHTML = reservinfo.name;
+        HairMenu.innerHTML = reservinfo.menu;
+        PaymentAmount.innerHTML = reservinfo.price;
+      });
+    </script>
+  </body>
+</html>

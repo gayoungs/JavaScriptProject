@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cheolsoo Salon</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/calendar.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/calendar.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      @font-face {
+        font-family: "NanumSquareNeo-Variable";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2")
+          format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
+      * {
+        font-family: "NanumSquareNeo-Variable", sans-serif;
+      }
+
+      body > div {
+        font-family: "Lato", sans-serif;
+      }
+      .accordion-body {
+        font-family: "Lato", sans-serif;
+      }
+      .nav-item > a {
+        color: #555555;
+      }
+
+      .header {
+        text-align: center;
+        position: fixed;
+        padding-top: 20px;
+        height: 150px;
+        z-index: 3;
+        background-color: #ddcbbe;
+        font-family: "Lato", sans-serif;
+        color: whitesmoke;
+      }
+      .header a {
+        text-decoration: none;
+        color: whitesmoke;
+      }
+      .head-con {
+        position: relative;
+      }
+      .header > i > .img1 {
+        position: absolute;
+        left: 50px;
+        top: 30px;
+        height: 70px;
+      }
+
+      .header-menu > div > a:hover {
+        color: #555555;
+      }
+      .footer {
+        padding-top: 20px;
+        border-top: 1px solid #c1bbb5;
+        background-color: #d7d1cc;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header" class="hd">
+      <div class="container-fluid head-con">
+        <div class="row">
+          <div class="col-lg-12 header">
+            <i><img src="img/min/logo4.png" alt="" class="img1" /></i>
+            <!-- <i><img src="img/min/top_icon7.png" alt="" class="img2" /></i> -->
+            <div>
+              <p class="fs-1">Chulsoo Salon</p>
+              <div class="container">
+                <div class="row justify-content-md-center header-menu">
+                  <div class="col-lg-1 col-md-1">
+                    <a href="index.html">Home</a>
+                  </div>
+                  <div class="col-lg-1 col-md-1">
+                    <a href="designer01.html">Profile</a>
+                  </div>
+                  <div class="col-lg-1 col-md-1">
+                    <a href="reservation.html">Reservation</a>
+                  </div>
+                  <div class="col-lg-1 col-md-1">
+                    <a href="lastline.html">Location</a>
+                  </div>
+                  <div class="col-lg-1 col-md-1">
+                    <a href="login.html">Login</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container-fluid" style="height: 130px"></div>
+    <div
+      class="container-fluid"
+      style="
+        background: url(img/min/subimg2.jpg) center;
+        height: 350px;
+        padding-top: 200px;
+        background-repeat: no-repeat;
+        background-size: cover;
+      "
+    >
+      <div class="img-div"></div>
+    </div>
+    <div class="container text-center" style="padding-top: 50px">
+      <div class="" style="font-size: 20px">종로점 예약</div>
+      <div class="" style="font-size: 18px">영업 시간 : 9:00 ~ 22:30</div>
+
+      <div
+        class="row justify-content-md-center"
+        style="border-top: 1px solid #c1bbb5; margin-bottom: 100px"
+      >
+        <div class="row justify-content-md-center">
+          <div class="col-lg-auto fs-4">예약하기</div>
+        </div>
+
+        <!-- 디자이너 프로필 이미지 4칸 -->
+        <div class="col-lg-5">
+          <table class="Calendar">
+            <thead>
+              <tr>
+                <td onClick="prevCalendar();" style="cursor: pointer">&#60;</td>
+                <td colspan="5">
+                  <span id="calYear"></span>년 <span id="calMonth"></span>월
+                </td>
+                <td onClick="nextCalendar();" style="cursor: pointer">&#62;</td>
+              </tr>
+              <tr>
+                <td>일</td>
+                <td>월</td>
+                <td>화</td>
+                <td>수</td>
+                <td>목</td>
+                <td>금</td>
+                <td>토</td>
+              </tr>
+            </thead>
+
+            <tbody></tbody>
+          </table>
+        </div>
+        <!-- 오른쪽 예약 정보 받을 5칸 -->
+        <div class="col-lg-5">
+          <table class="table timetable">
+            <tbody></tbody>
+          </table>
+          <div class="input-group flex-nowrap" style="display: none">
+            <span class="input-group-text" id="addon-wrapping"
+              >선택한 날짜</span
+            >
+            <input type="text" class="form-control choiced" disabled />
+          </div>
+          <!-- *************************************** -->
+          <div class="input-group flex-nowrap" style="display: none">
+            <span class="input-group-text" id="addon-wrapping">시간 선택</span>
+            <input type="text" class="form-control tchoiced" disabled />
+          </div>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="reservModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" style="font-family: 'Lato', sans-serif">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1
+                    class="modal-title fs-5"
+                    id="exampleModalLabel"
+                    style="font-family: 'Lato', sans-serif"
+                  >
+                    예약 내역
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <th scope="row">예약자 성명</th>
+                        <td class="rename">Mark</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">예약 날짜</th>
+                        <td class="redate">Jacob</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">예약 시간</th>
+                        <td colspan="2" class="retime">Larry the Bird</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">시술 메뉴</th>
+                        <td colspan="2" class="remenu">Larry the Bird</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">총 금액</th>
+                        <td colspan="2" class="totalprice">Larry the Bird</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button "
+                    class="btn btn-secondary paybtn"
+                    data-bs-dismiss="modal"
+                  >
+                    결제하기
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 예약하기 모달 끝 -->
+        </div>
+        <div class="row justify-content-md-center">
+          <div class="col-lg-5">
+            <!-- 아코디언 시작 -->
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                    style="
+                      font-family: 'Lato', sans-serif;
+                      background-color: #ddcbbe;
+                      color: #555555;
+                    "
+                  >
+                    시술 메뉴 선택
+                  </button>
+                </h2>
+                <div
+                  id="collapseOne"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#accordionExample"
+                >
+                  <!-- 아코디언 바디 -->
+                  <div class="accordion-body" style="color: #555555">
+                    <!-- 네비바 탭 -->
+                    <ul class="nav nav-tabs menutab">
+                      <li class="nav-item">
+                        <a
+                          class="nav-link cutnav active"
+                          aria-current="page"
+                          href="#"
+                          >컷</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link permnav" href="#">펌</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link colornav" href="#">컬러</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link clinicnav" href="#">클리닉</a>
+                      </li>
+                    </ul>
+                    <!-- 네비바 탭 끝 -->
+                    <!-- 네비바 안에 탭에 따라 보여질 div 부분 (컷, 펌, 컬러, 클리닉) -->
+                    <div class="cutmenu" style="display: ">
+                      <!-- check form 하나 라벨까지 -->
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="30000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          논컷
+                        </label>
+                      </div>
+                      <!-- check fomr 하나 끝  -->
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="30000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckChecked">
+                          어스컷
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="30000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          던컷
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="30000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          에브컷
+                        </label>
+                      </div>
+                    </div>
+                    <!-- 메뉴 div 끝 -->
+                    <!-- 펌메뉴 시작 -->
+                    <div class="permmenu" style="display: none">
+                      <!-- check form 하나 라벨까지 -->
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="120000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          루프펌
+                        </label>
+                      </div>
+                      <!-- check fomr 하나 끝  -->
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="120000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckChecked">
+                          라이드펌
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="120000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          플라잉펌
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="120000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          애즈펌
+                        </label>
+                      </div>
+                    </div>
+                    <!-- 펌메뉴  끝 -->
+
+                    <!-- 칼라메뉴 시작 -->
+                    <div class="colormenu" style="display: none">
+                      <!-- check form 하나 라벨까지 -->
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="90000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          머지칼라
+                        </label>
+                      </div>
+                      <!-- check fomr 하나 끝  -->
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="90000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckChecked">
+                          페인팅칼라
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="90000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          오로라 레드
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="90000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          솜브레
+                        </label>
+                      </div>
+                    </div>
+                    <!-- 칼라메뉴  끝 -->
+                    <!-- 클리닉메뉴 시작 -->
+                    <div class="clinicmenu" style="display: none">
+                      <!-- check form 하나 라벨까지 -->
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="70000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          스텔라 클리닉
+                        </label>
+                      </div>
+                      <!-- check fomr 하나 끝  -->
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="70000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckChecked">
+                          시세이도 클리닉
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="70000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          두피 클리닉
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="70000"
+                          id="flexCheckDefault"
+                        />
+                        <label class="form-check-label" for="flexCheckDefault">
+                          [EVENT]스텔라 5단계 모발클리닉 3회권
+                        </label>
+                      </div>
+                    </div>
+                    <!-- 클리닉메뉴  끝 -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 오른쪽 섹션 아코디언 아래 -->
+          </div>
+        </div>
+        <div class="row justify-content-md-center">
+          <div class="col-lg-3">
+            <!-- 예약하기 modal -->
+            <button
+              type="button"
+              class="btn btn-primary reservbtn"
+              data-bs-toggle="modal"
+              data-bs-target="#reservModal"
+              style="
+                background-color: #ddcbbe;
+                border-style: none;
+                color: #555555;
+              "
+            >
+              예약 하기
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer id="footer"></footer>
+    <!-- 내 스크립트 시작 -->
+    <script>
+      /* 시간 선택 타임 테이블 */
+      var startTime1 = new Date();
+      startTime1.setHours(9, 0, 0); // 시작 시간 설정 (9시 0분 0초)
+
+      var endTime1 = new Date();
+      endTime1.setHours(22, 0, 0); // 종료 시간 설정 (22시 0분 0초)
+
+      var interval1 = 30; // 30분 간격
+
+      var table1 = document.querySelector(".timetable > tbody");
+
+      while (startTime1 <= endTime1) {
+        var row1 = table1.insertRow();
+        for (var i = 0; i < 4; i++) {
+          var timeCell = row1.insertCell();
+          timeCell.innerHTML =
+            startTime1.getHours() +
+            ":" +
+            ("0" + startTime1.getMinutes()).slice(-2);
+          startTime1.setMinutes(startTime1.getMinutes() + interval1);
+        }
+      }
+      var tchoiced = document.querySelector(".tchoiced");
+      table1.onclick = function (params) {
+        var arr = document.querySelectorAll(".choicetime");
+        if (arr.length > 0) {
+          for (var m = 0; m < arr.length; m++) {
+            arr[m].classList.remove("choicetime");
+          }
+        }
+        if (event.target.tagName != "TD") {
+          return;
+        }
+        event.target.classList.add("choicetime");
+
+        tchoiced.value = event.target.innerHTML;
+      };
+
+      /* 시술 메뉴 선택 토글 */
+      var menutab = document.querySelector(".menutab");
+      menutab.onclick = () => {
+        if (event.target.tagName != "A") {
+          return;
+        }
+        var menuarr = document.querySelectorAll(
+          ".menutab > .nav-item > .active"
+        );
+        if (menuarr.length > 0) {
+          for (var m = 0; m < menuarr.length; m++) {
+            menuarr[m].classList.remove("active");
+          }
+        }
+        event.target.classList.add("active");
+
+        changenave(event.target);
+      };
+
+      function changenave(params) {
+        if (params.classList.contains("cutnav")) {
+          document.querySelector(".cutmenu").style.display = "";
+          document.querySelector(".permmenu").style.display = "none";
+          document.querySelector(".colormenu").style.display = "none";
+          document.querySelector(".clinicmenu").style.display = "none";
+        } else if (params.classList.contains("permnav")) {
+          document.querySelector(".cutmenu").style.display = "none";
+          document.querySelector(".permmenu").style.display = "";
+          document.querySelector(".colormenu").style.display = "none";
+          document.querySelector(".clinicmenu").style.display = "none";
+        } else if (params.classList.contains("colornav")) {
+          document.querySelector(".cutmenu").style.display = "none";
+          document.querySelector(".permmenu").style.display = "none";
+          document.querySelector(".colormenu").style.display = "";
+          document.querySelector(".clinicmenu").style.display = "none";
+        } else if (params.classList.contains("clinicnav")) {
+          document.querySelector(".cutmenu").style.display = "none";
+          document.querySelector(".permmenu").style.display = "none";
+          document.querySelector(".colormenu").style.display = "none";
+          document.querySelector(".clinicmenu").style.display = "";
+        }
+      }
+
+      /* 예약하기 버튼 */
+      var reservbtn = document.querySelector(".reservbtn");
+      reservbtn.onclick = () => {
+        var total = 0;
+        var checkedarr = [];
+        var chdate = document.querySelector(".choiced").value;
+        var chtime = document.querySelector(".tchoiced").value;
+        if (
+          chdate === null ||
+          chtime === null ||
+          chdate === "" ||
+          chtime === ""
+        ) {
+          alert("날짜와 시간을 선택해주세요");
+          document.getElementById("reservModal").modal("hide");
+          return;
+        }
+        var checkarr = document.querySelectorAll(".form-check-input");
+        for (var l = 0; l < checkarr.length; l++) {
+          if (checkarr[l].checked) {
+            checkedarr.push(checkarr[l].nextElementSibling.innerHTML.trim());
+            total += parseInt(checkarr[l].value);
+            //console.log(checkarr[l].nextElementSibling.innerHTML);
+          }
+        }
+        var rename = document.querySelector(".rename");
+        rename.innerHTML = sessionStorage.getItem("name");
+        document.querySelector(".redate").innerHTML = chdate;
+        var retime = (document.querySelector(".retime").innerHTML = chtime);
+        if (checkedarr.length > 1) {
+          var remenu = (document.querySelector(".remenu").innerHTML =
+            checkedarr[0] + " 외 " + parseInt(checkedarr.length - 1) + "메뉴");
+        } else {
+          var remenu = (document.querySelector(".remenu").innerHTML =
+            checkedarr[0]);
+        }
+        document.querySelector(".totalprice").innerHTML = total;
+      };
+
+      /* 결제버튼 */
+      var paybtn = document.querySelector(".paybtn");
+      paybtn.onclick = () => {
+        var IMP = window.IMP;
+        IMP.init("imp46754522");
+        IMP.request_pay(
+          {
+            pg: "kakaopay",
+            pay_method: "card",
+            merchant_uid: "merchant_" + new Date().getTime(),
+            name: "결제",
+            amount: 3,
+            buyer_email: "구매자 이메일",
+            buyer_name: "구매자 이름",
+            buyer_tel: "구매자 번호",
+            /*  buyer_addr: '구매자 주소',
+            buyer_postcode: '구매자 주소', */
+            m_redirect_url: "http://127.0.0.1:5500/teamproject/index.html",
+          },
+          function (rsp) {
+            /* 결제 성공 시 */
+            if (rsp.success) {
+              var msg = "결제가 완료되었습니다.";
+              alert("결제가 완료되었습니다.");
+              var username = sessionStorage.getItem("name");
+              var reservinfo = {
+                name: username,
+                phone: "010-4567-4567",
+                date: document.querySelector(".redate").innerHTML,
+                time: document.querySelector(".retime").innerHTML,
+                menu: document.querySelector(".remenu").innerHTML,
+                price: document.querySelector(".totalprice").innerHTML,
+              };
+
+              var jsoninfo = JSON.stringify(reservinfo);
+
+              sessionStorage.setItem("reservinfo", jsoninfo);
+
+              location.href = "http://127.0.0.1:5500/teamproject/index.html";
+            } else {
+              var msg = "결제에 실패하였습니다.";
+              alert("결제에 실패하셨습니다.");
+              rsp.error_msg;
+            }
+          }
+        );
+      };
+    </script>
+    <!-- jQuery -->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+    ></script>
+    <!-- iamport.payment.js -->
+    <script
+      type="text/javascript"
+      src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"
+    ></script>
+
+    <footer id="footer">
+      <div class="container-fluid footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2">Chulsoo</div>
+          </div>
+          <div class="row justify-content-start">
+            <div class="col-2">"CEO Kim Chul Soo"</div>
+          </div>
+          <div class="row">
+            <div class="col-4 align-self-start" style="width: 41%">
+              "Email" @ @ "chulsoo.kr | Phone number 02-325-1251"
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="col-4" style="text-align: right">
+              <a
+                href="https://www.instagram.com/chulsoosalon"
+                style="text-decoration: none"
+              >
+                <img src="img/min/Instagram.jpg" style="width: 70px" />
+              </a>
+              <a href="http://pf.kakao.com/_UZxmRG">
+                <img src="img/min/KakaoTalk.jpg" style="width: 70px" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

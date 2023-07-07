@@ -1,0 +1,63 @@
+.Calendar {
+  text-align: center;
+}
+
+.Calendar > thead > tr:first-child > td {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.Calendar > thead > tr:last-child > td {
+  font-family: 'Questrial', sans-serif;
+  font-weight: 600;
+}
+
+.Calendar > tbody > tr > td > p {
+  font-family: 'Montserrat', sans-serif;
+  height: 45px;
+  width: 45px;
+  border-radius: 45px;
+  transition-duration: 0.2s;
+  line-height: 45px;
+  margin: 2.5px;
+  display: block;
+  text-align: center;
+}
+
+.pastDay {
+  color: lightgray;
+}
+
+.today {
+  background-color: #f5d042;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.futureDay {
+  background-color: #ffffff;
+  cursor: pointer;
+}
+.futureDay:hover {
+  background: #eee;
+}
+
+.futureDay.choiceDay,
+.today.choiceDay {
+  background: #0a174e;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.timetable > tbody {
+  cursor: pointer;
+}
+
+.choicetime {
+  color: #f5d042;
+  font-weight: 600;
+  cursor: pointer;
+}

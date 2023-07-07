@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "Great Vibes", cursive;
+}
+/* header */
+
+.header {
+  text-align: center;
+  position: fixed;
+  padding-top: 20px;
+  height: 140px;
+  z-index: 3;
+  text-shadow: 6px 2px 2px black;
+  font-family: "Lato", sans-serif;
+  color: black;
+}
+.header a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+.head-con {
+  position: relative;
+}
+.header > i > .img1 {
+  position: absolute;
+  left: 50px;
+  top: 30px;
+  height: 70px;
+}
+
+.header-menu > div > a:hover {
+  color: #555555;
+}
+
+/* ######################### Main image ######################### */
+
+.main-con {
+  width: 100%;
+  height: 800px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+}
+
+.main-con .main_wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+.main_wrap h2 {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+.main_wrap p {
+  font-size: 22px;
+}
+/* .main_wrap button {
+    background: none;
+    border: 2px solid darkseagreen;
+    color: white;
+    padding: 15px 20px;
+    margin-top: 30px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+.main_wrap button:hover {
+    background-color: rgb(152, 201, 156);
+} */
+
+/* ######################### Swiper ############################ */
+.main-con {
+  width: 100%;
+  height: 500px;
+  margin-top: 30px;
+}
+
+.swiper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  padding: 30px 20px;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.swiper-slide:hover {
+  opacity: 1;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.swiper-slide:hover img {
+  transform: scale(1.2);
+}

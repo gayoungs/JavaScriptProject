@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+        <link rel="stylesheet" href="css/swiper.css" />
+
+        <script src="js/jqueryjs.js"></script>
+
+        <script src="js/bootstrap.min.js"></script>
+
+        <script src="js/swiper.js"></script>
+
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+            * {
+                font-family: "Great Vibes", cursive;
+            }
+
+            * {
+                padding: 0;
+                margin: 0 auto;
+                list-style: none;
+            }
+
+            .designercon {
+                margin-top: 150px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .designercon .left {
+                float: left;
+            }
+
+            .designercon .left > p {
+                text-align: center;
+                margin-top: 100px;
+                font-size: 30px;
+            }
+
+            .designercon .right .career {
+                float: left;
+                margin-left: 30px;
+            }
+
+            .designercon .right .portfolio {
+                float: left;
+                position: absolute;
+                bottom: 0;
+                right: 150px;
+                margin-bottom: 30px;
+                font-size: 20px;
+            }
+
+            .designercon .right .reserve {
+                float: left;
+                position: absolute;
+                bottom: 0;
+                right: 30px;
+                margin-bottom: 30px;
+                font-size: 20px;
+            }
+
+            .career ul {
+                font-size: 30px;
+                width: 800px;
+            }
+
+            .career ul > li {
+                padding: 10px;
+                font-size: 30px;
+            }
+
+            .swiper1 {
+                width: 1200px;
+                height: 600px;
+                background-color: #ffffff;
+                border-radius: 30px;
+            }
+
+            .swiper2 {
+                width: 1050px;
+                margin: 0 auto;
+                text-align: center;
+                height: 400px;
+                background-color: #ffffff;
+            }
+
+            .swiper2 img {
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <div
+            class="modal fade"
+            id="portfolio"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="staticBackdropLabel">
+                            Portfolio
+                        </h2>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="swiper swiper2">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <img src="img2/36.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/37.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/38.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/39.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/40.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/23.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/24.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/25.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/26.jpg" alt="" />
+                                </div>
+                            </div>
+                            <!-- If we need pagination -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="modal fade"
+            id="portfolio2"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="staticBackdropLabel">
+                            Portfolio
+                        </h2>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="swiper swiper2">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <img src="img2/27.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/28.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/29.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/30.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/31.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/32.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/33.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/34.jpg" alt="" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img2/35.jpg" alt="" />
+                                </div>
+                            </div>
+                            <!-- If we need pagination -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container designercon">
+            <div class="con">
+                <div class="swiper swiper1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="left">
+                                <img src="img/헬로키티.png" alt="" />
+                                <p>헬로키티 대표원장</p>
+                                <!-- 디자이너 img -->
+                            </div>
+                            <div class="right">
+                                <div class="career">
+                                    <ul>
+                                        <h1>Profile</h1>
+                                        <li>
+                                            - Vidal Sassoon A.B.C / Advance
+                                            Course Complete
+                                        </li>
+                                        <li>- Amos hotperm diploma</li>
+                                        <li>- Repit Color Diploma</li>
+                                        <li>- Amoscolor diploma</li>
+                                        <li>- S3 cut complete</li>
+                                        <li>- 2010 seoul fashion week hair</li>
+                                    </ul>
+                                </div>
+                                <!-- onclick -->
+                                <button
+                                    type="input"
+                                    class="portfolio btn btn-secondary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#portfolio"
+                                >
+                                    Portfolio
+                                </button>
+                                <button
+                                    type="input"
+                                    class="reserve btn btn-secondary"
+                                >
+                                    Reservation
+                                </button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="left">
+                                <img src="img/폼폼푸린.png" alt="" />
+                                <p>폼폼푸린 부원장</p>
+                                <!-- 디자이너 img -->
+                            </div>
+                            <div class="right">
+                                <div class="career">
+                                    <ul>
+                                        <h1>Profile</h1>
+                                        <li>
+                                            - Vidal Sassoon A.B.C / Advance
+                                            Course Complete
+                                        </li>
+                                        <li>- Repit Color Diploma</li>
+                                        <li>- S3 cut complete</li>
+                                        <li>- Amoscolor diploma</li>
+                                        <li>- Amos hotperm diploma</li>
+                                        <li>- 2013 seoul fashion week hair</li>
+                                    </ul>
+                                </div>
+                                <!-- onclick -->
+                                <button
+                                    type="input"
+                                    class="portfolio btn btn-secondary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#portfolio2"
+                                >
+                                    Portfolio
+                                </button>
+                                <button
+                                    type="input"
+                                    class="reserve btn btn-secondary"
+                                >
+                                    Reservation
+                                </button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="left">
+                                <img src="img/케로케로피.png" alt="" />
+                                <p>케로케로피 실장</p>
+                                <!-- 디자이너 img -->
+                            </div>
+                            <div class="right">
+                                <div class="career">
+                                    <ul>
+                                        <h1>Profile</h1>
+                                        <li>
+                                            - Vidal Sassoon A.B.C / Advance
+                                            Course Complete
+                                        </li>
+                                        <li>- Repit Color Diploma</li>
+                                        <li>- S3 cut complete</li>
+                                        <li>- Amoscolor diploma</li>
+                                        <li>- Amos hotperm diploma</li>
+                                        <li>- 2015 seoul fashion week hair</li>
+                                    </ul>
+                                </div>
+                                <!-- onclick -->
+                                <button
+                                    type="input"
+                                    class="portfolio btn btn-secondary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#portfolio2"
+                                >
+                                    Portfolio
+                                </button>
+                                <button
+                                    type="input"
+                                    class="reserve btn btn-secondary"
+                                >
+                                    Reservation
+                                </button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="left">
+                                <img src="img/어그레츠코.png" alt="" />
+                                <p>어그레츠코 디자이너</p>
+                                <!-- 디자이너 img -->
+                            </div>
+                            <div class="right">
+                                <div class="career">
+                                    <ul>
+                                        <h1>Profile</h1>
+                                        <li>
+                                            - Vidal Sassoon A.B.C / Advance
+                                            Course Complete
+                                        </li>
+                                        <li>- Repit Color Diploma</li>
+                                        <li>- S3 cut complete</li>
+                                        <li>- Amoscolor diploma</li>
+                                        <li>- Amos hotperm diploma</li>
+                                        <li>- 2020 seoul fashion week hair</li>
+                                    </ul>
+                                </div>
+                                <!-- onclick -->
+                                <button
+                                    type="input"
+                                    class="portfolio btn btn-secondary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#portfolio2"
+                                >
+                                    Portfolio
+                                </button>
+                                <button
+                                    type="input"
+                                    class="reserve btn btn-secondary"
+                                >
+                                    Reservation
+                                </button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="left">
+                                <img src="img/쿠로미.png" alt="" />
+                                <p>쿠로미 디자이너</p>
+                                <!-- 디자이너 img -->
+                            </div>
+                            <div class="right">
+                                <div class="career">
+                                    <ul>
+                                        <h1>Profile</h1>
+                                        <li>
+                                            - Vidal Sassoon A.B.C / Advance
+                                            Course Complete
+                                        </li>
+                                        <li>- Repit Color Diploma</li>
+                                        <li>- S3 cut complete</li>
+                                        <li>- Amoscolor diploma</li>
+                                        <li>- Amos hotperm diploma</li>
+                                        <li>- 2020 seoul fashion week hair</li>
+                                    </ul>
+                                </div>
+                                <!-- onclick -->
+                                <button
+                                    type="input"
+                                    class="portfolio btn btn-secondary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#portfolio2"
+                                >
+                                    Portfolio
+                                </button>
+                                <button
+                                    type="input"
+                                    class="reserve btn btn-secondary"
+                                >
+                                    Reservation
+                                </button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="left">
+                                <img src="img/코기뮹.png" alt="" />
+                                <p>코기뮹 디자이너</p>
+                                <!-- 디자이너 img -->
+                            </div>
+                            <div class="right">
+                                <div class="career">
+                                    <ul>
+                                        <h1>Profile</h1>
+                                        <li>
+                                            - Vidal Sassoon A.B.C / Advance
+                                            Course Complete
+                                        </li>
+                                        <li>- Repit Color Diploma</li>
+                                        <li>- S3 cut complete</li>
+                                        <li>- Amoscolor diploma</li>
+                                        <li>- Amos hotperm diploma</li>
+                                        <li>- 2020 seoul fashion week hair</li>
+                                    </ul>
+                                </div>
+                                <!-- onclick -->
+                                <button
+                                    type="input"
+                                    class="portfolio btn btn-secondary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#portfolio2"
+                                >
+                                    Portfolio
+                                </button>
+                                <button
+                                    type="input"
+                                    class="reserve btn btn-secondary"
+                                >
+                                    Reservation
+                                </button>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const swiper1 = new Swiper(".swiper1", {
+                // Optional parameters
+                direction: "vertical",
+                loop: true,
+                mousewheel: true,
+                autoplay: {
+                    //자동재생
+                    delay: 5000,
+                },
+                speed: 1000,
+
+                // If we need pagination
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+            });
+
+            const swiper2 = new Swiper(".swiper2", {
+                // Optional parameters
+                direction: "horizontal",
+                slidesPerView: 3,
+                loop: true,
+                mousewheel: true,
+                autoplay: {
+                    //자동재생
+                    delay: 1000,
+                },
+                speed: 1000,
+
+                // If we need pagination
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+            });
+
+            var reserve = document.querySelector(".reserve");
+            reserve.onclick = function () {
+                location.href = "index copy.html";
+            };
+
+            fetch("header.html")
+                .then((response) => response.text())
+                .then((html) => {
+                    var headerElement = document.getElementById("header");
+                    headerElement.innerHTML = html;
+                });
+            fetch("footer.html")
+                .then((response) => response.text())
+                .then((html) => {
+                    var footerElement = document.getElementById("footer");
+                    footerElement.innerHTML = html;
+                });
+        </script>
+    </body>
+</html>

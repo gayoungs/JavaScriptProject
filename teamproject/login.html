@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- 카카오 SDK로드 -->
+    <script src="js/kakao.min.js"></script>
+    <!--  <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"></script> -->
+    <script src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="js/jquery-1.11.3.min.js"></script> -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .wrap {
+        margin: 0 auto;
+
+        text-align: center;
+      }
+      .wrap > .container {
+        margin: 20px;
+        margin-top: 200px;
+      }
+      .container .chulsoo {
+        margin-bottom: 30px;
+      }
+      .cls-1 {
+        font-size: 117px;
+        fill: #ddcbbe;
+        font-family: "IvyMode", sans-serif;
+        font-weight: 200;
+      }
+      .header {
+        width: 100%;
+        text-align: center;
+        position: fixed;
+        padding-top: 20px;
+        height: 150px;
+        z-index: 3;
+        background-color: #ddcbbe;
+        font-family: "Lato", sans-serif;
+        color: whitesmoke;
+      }
+      .wrap {
+        height: 600px;
+        width: 600px;
+      }
+      .wrap .container > h3 {
+        font-size: 80px;
+        padding-bottom: 50px;
+        color: #e9d6c9;
+      }
+      .navTab > .container {
+        display: inline-block;
+      }
+      .header a {
+        text-decoration: none;
+        color: whitesmoke;
+      }
+      .head-con {
+        position: relative;
+      }
+      .header > i > .img1 {
+        position: absolute;
+        left: 50px;
+        top: 30px;
+        height: 70px;
+      }
+
+      .header-menu > div > a:hover {
+        color: #555555;
+      }
+      .footer {
+        padding-top: 20px;
+        border-top: 1px solid #c1bbb5;
+        background-color: #d7d1cc;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header">
+      <div class="container-fluid head-con">
+        <div class="row">
+          <div class="col-lg-12 header">
+            <i><img src="img/min/logo4.png" alt="" class="img1" /></i>
+            <!-- <i><img src="img/min/top_icon7.png" alt="" class="img2" /></i> -->
+            <div class="navTab">
+              <p class="fs-1">Chulsoo Salon</p>
+              <div class="container">
+                <div class="row justify-content-md-center header-menu">
+                  <div class="col-lg-1 col-md-1">
+                    <a href="index.html">Home</a>
+                  </div>
+                  <div class="col-lg-1 col-md-1">
+                    <a href="designer01.html">Profile</a>
+                  </div>
+                  <div class="col-lg-1 col-md-1">
+                    <a href="reservation.html">Reservation</a>
+                  </div>
+                  <div class="col-lg-1 col-md-1">
+                    <a href="lastline.html">Location</a>
+                  </div>
+                  <div class="col-lg-1 col-md-1">
+                    <a href="login.html">Login</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="wrap">
+      <div class="container">
+        <h3>Login</h3>
+        <div class="chulsoo">
+          <img src="img/mainimg/chulsoo.gif" />
+        </div>
+        <!-- 카카오 로그인 -->
+        <div class="kakao-login">
+          <a id="kakao-login-btn" href="javascript:loginWithKakao()">
+            <img
+              src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
+              width="222"
+              alt="카카오 로그인 버튼"
+            />
+          </a>
+          <p id="token-result"></p>
+          <!-- 네이버 로그인 -->
+          <!-- 네이버 로그인 버튼 노출 영역 -->
+          <div id="naver_id_login">
+            <!-- </div>
+                    <div class="naver-login"> -->
+            <!-- 아래와같이 아이디를 꼭 써준다. -->
+            <a id="naverIdLogin_loginButton" href="javascript:void(0)">
+              <img src="img/btnG_완성형.png" alt="네이버 로그인 버튼" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 카카오 로그인 -->
+    <script>
+      //1. 카카오 SDK 초기화
+      Kakao.init("fdb00cbf1a10006bdc1b4e11edfdc547");
+      Kakao.isInitialized();
+
+      //2. 인가서버 창 띄우기
+      function loginWithKakao() {
+        Kakao.Auth.authorize({
+          redirectUri: "http://127.0.0.1:5500/index.html",
+        });
+      }
+
+      //카카오 서버에서 인가 코드를 url주소를 담아서 보내줍니다.
+      //3. 인가코드 얻기
+
+      var urlSearch = new URLSearchParams(location.search);
+
+      var value = urlSearch.get("code");
+
+      //4. 토큰발급 받기
+      if (value != null) {
+        ajax();
+      }
+
+      function ajax() {
+        var url = "http://127.0.0.1:5500/index.html";
+        var key = "2fc89e2b2cc7e6d613cf18b688742adc";
+
+        var data =
+          "grant_type=authorization_code" +
+          "&client_id=" +
+          key +
+          "&redirect_uri=" +
+          url +
+          "&code=" +
+          value;
+
+        //토큰 요청
+        fetch("https://kauth.kakao.com/oauth/token", {
+          method: "post",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=utf-8", //폼형식 (키=값&키=값)
+          },
+          body: data,
+        })
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            //브라우저 종료시에 모두 삭제
+            //쿠키&세션스토리지에 토큰 값
+            sessionStorage.setItem("kakao_access", data.access_token);
+
+            //사용자 정보 API 호출하기
+            getUser(data.access_token);
+          });
+      }
+
+      //5. 토큰기반으로 API호출하기 JS로 처리
+      function getUser(token) {
+        fetch("https://kapi.kakao.com/v2/user/me", {
+          mathod: "post",
+          headers: {
+            Authorization: "Bearer " + token, //띄어쓰기 무조건 하기
+            "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+          },
+        })
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            console.log(data);
+          });
+      }
+    </script>
+
+    <!-- 네이버 로그인 -->
+
+    <!-- //네이버 로그인 버튼 노출 영역 -->
+    <script type="text/javascript">
+      var naver_id_login = new naver_id_login(
+        "UjK82ybecZ6M3xihPYqf",
+        "http://127.0.0.1:5500/teamproject/index.html"
+      );
+      var state = naver_id_login.getUniqState();
+      naver_id_login.setButton("green", 3, 48);
+      naver_id_login.setDomain("http://127.0.0.1:5500/teamproject/login.html");
+      naver_id_login.setState(state);
+      naver_id_login.init_naver_id_login();
+    </script>
+
+    <footer id="footer">
+      <div class="container-fluid footer">
+        <div class="container">
+          <h3>Login</h3>
+          <div class="row">
+            <div class="col-lg-2">Chulsoo</div>
+          </div>
+          <div class="row justify-content-start">
+            <div class="col-2">"CEO Kim Chul Soo"</div>
+          </div>
+          <div class="row">
+            <div class="col-4 align-self-start" style="width: 41%">
+              "Email" @ @ "chulsoo.kr | Phone number 02-325-1251"
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="col-4" style="text-align: right">
+              <a
+                href="https://www.instagram.com/chulsoosalon"
+                style="text-decoration: none"
+              >
+                <img src="img/min/Instagram.jpg" style="width: 70px" />
+              </a>
+              <a href="http://pf.kakao.com/_UZxmRG">
+                <img src="img/min/KakaoTalk.jpg" style="width: 70px" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

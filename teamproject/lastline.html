@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    
+
+    <style>
+
+
+      #map {
+      width: 500px;
+      height: 450px;
+      }
+
+
+      #map-container {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       margin-top: 20px; /* 제목과의 간격 조정 */
+      }
+
+      #locations {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+      }
+
+      .location {
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+
+      
+
+      header {
+       top: 0;
+      z-index: 2;
+      }
+
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 75px;
+      padding: 0 20px;
+      justify-content: center;
+    }
+
+  h1 {
+    color: white;
+    margin: 0;
+  }
+
+.menu {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  display: inline-block;
+  margin-left: 10px;
+  
+}
+
+.menu a {
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.header {
+        text-align: center;
+        position: fixed;
+        padding-top: 20px;
+        height: 150px;
+        z-index: 3;
+        background-color: #ddcbbe;
+        font-family: "Lato", sans-serif;
+        color: whitesmoke;
+    }
+    .header a {
+        text-decoration: none;
+        color: whitesmoke;
+    }
+    .head-con {
+        position: relative;
+    }
+    .header > i > .img1 {
+        position: absolute;
+        left: 50px;
+        top: 30px;
+        height: 70px;
+    }
+
+    .header-menu > div > a:hover {
+        color: #555555;
+    }
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.footer {
+                padding-top: 20px;
+                border-top: 1px solid #c1bbb5;
+                background-color: #d7d1cc;
+            }
+
+
+</style>
+
+
+  </head>
+    <body>
+      <header id="header">
+        <div class="container-fluid head-con">
+          <div class="row">
+              <div class="col-lg-12 header">
+                  <i><img src="img/min/logo4.png" alt="" class="img1" /></i>
+                  <!-- <i><img src="img/min/top_icon7.png" alt="" class="img2" /></i> -->
+                  <div>
+                      <p class="fs-1">Chulsoo Salon</p>
+                      <div class="container">
+                          <div class="row justify-content-md-center header-menu">
+                              <div class="col-lg-1 col-md-1">
+                                  <a href="index.html">Home</a>
+                              </div>
+                              <div class="col-lg-1 col-md-1">
+                                  <a href="designer01.html">Profile</a>
+                              </div>
+                              <div class="col-lg-1 col-md-1">
+                                  <a href="reservation.html">Reservation</a>
+                              </div>
+                              <div class="col-lg-1 col-md-1">
+                                  <a href="lastline.html">Location</a>
+                              </div>
+                              <div class="col-lg-1 col-md-1">
+                                  <a href="login.html">Login</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+
+      </header>
+    
+      <h3>Chulsoo salon location</h3>
+
+      <div id="map-container" style="margin-left: 600px; margin-top: 200px;">
+        <div id="map" style="padding-left: 300px;"></div>
+        <div id="locations">
+          <div class="location" data-lat="37.269373" data-lng="126.944305">
+            수원점
+          </div>
+          <div class="location" data-lat="37.47927" data-lng="127.038953">
+            양재점
+          </div>
+          <div class="location" data-lat="37.569678" data-lng="126.998325">
+            종로점
+          </div>
+          <div class="location" data-lat="37.506976" data-lng="127.040605">
+            선정릉점
+          </div>
+        </div>
+      </div>
+
+      <script
+        type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d61d24f5601fbf11f4eb68a9a8109e3d"
+      ></script>
+
+      <!--위도경도찾기-->
+      <script>
+    
+      var container = document.getElementById("map");
+      var options = {
+        center: new kakao.maps.LatLng(37.47927, 127.038953), // 가운데로 옮기고자 하는 좌표값
+        level: 3,
+      };
+
+      var map = new kakao.maps.Map(container, options);
+
+        var map = new kakao.maps.Map(container, options);
+        var markers = [];
+
+        // 4개의 지점 좌표
+        var locations = [
+          {
+            title: "수원점",
+            address: "경기도 수원시 권선구 호매실동 1344-5",
+            lat: 37.269373,
+            lng: 126.944305,
+          },
+          {
+            title: "양재점",
+            address: "서울특별시 서초구 양재동 20-23",
+            lat: 37.47927,
+            lng: 127.038953,
+          },
+          {
+            title: "종로점",
+            address: "서울특별시 종로구 예지동 231번지",
+            lat: 37.569678,
+            lng: 126.998325,
+          },
+          {
+            title: "선정릉점",
+            address: "서울특별시 종로구 동순라길 60-7",
+            lat: 37.506976,
+            lng: 127.040605,
+          },
+        ];
+
+        // 4개의 지점에 마커 추가
+        for (var i = 0; i < locations.length; i++) {
+          var marker = new kakao.maps.Marker({
+            map: map,
+            position: new kakao.maps.LatLng(locations[i].lat, locations[i].lng),
+            title: locations[i].title,
+          });
+
+          markers.push(marker);
+
+          kakao.maps.event.addListener(
+            marker,
+            "mouseover",
+            makeOverListener(map, marker, locations[i].title)
+          );
+          kakao.maps.event.addListener(
+            marker,
+            "mouseout",
+            makeOutListener(marker)
+          );
+        }
+
+        // 지점명 클릭 이벤트 처리
+        var locationElements = document.querySelectorAll(".location");
+        locationElements.forEach(function (element, index) {
+          element.addEventListener("click", function () {
+            var marker = markers[index];
+            map.setCenter(marker.getPosition());
+            kakao.maps.event.trigger(marker, "mouseover");
+          });
+        });
+
+        function makeOverListener(map, marker, title) {
+                return function () {
+      var content = '<div class="custom-infowindow">' + title + '</div>';
+      var infowindow = new kakao.maps.InfoWindow({
+      content: content,
+      removable: true,
+      disableAutoPan: true,
+      zIndex: 9999,
+      });
+      infowindow.open(map, marker);
+      marker.setTitle(marker.getTitle() + " (클릭하여 확대)");
+      marker.setAnimation(kakao.maps.Animation.BOUNCE);
+ 
+      };
+    }
+
+        function makeOutListener(marker) {
+          return function () {
+            var title = marker.getTitle().split(" (")[0];
+            marker.setZIndex(0);
+            marker.setTitle(title);
+            marker.setAnimation(null);
+          };
+        }
+      </script>
+
+      <footer id="footer">
+        <div class="container-fluid footer">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-2">Chulsoo</div>
+              </div>
+              <div class="row justify-content-start">
+                  <div class="col-2">"CEO Kim Chul Soo"</div>
+              </div>
+              <div class="row">
+                  <div class="col-4 align-self-start" style="width: 41%">
+                      "Email" @ @ "chulsoo.kr | Phone number 02-325-1251"
+                  </div>
+              </div>
+              <div class="row justify-content-end">
+                  <div class="col-4" style="text-align: right">
+                      <a
+                          href="https://www.instagram.com/chulsoosalon"
+                          style="text-decoration: none"
+                      >
+                          <img
+                              src="img/min/Instagram.jpg"
+                              style="width: 70px"
+                          />
+                      </a>
+                      <a href="http://pf.kakao.com/_UZxmRG">
+                          <img
+                              src="img/min/KakaoTalk.jpg"
+                              style="width: 70px"
+                          />
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+      </footer>
+
+      
+      
+    </body>
+  </html>
+</html>
